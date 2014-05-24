@@ -29,7 +29,7 @@ GET /technos/{code}/teams
 
 * [http://10.12.1.135:9000/api/v1/technos/PHP/teams](http://10.12.1.135:9000/api/v1/technos/PHP/teams)
 
-## rechercher les équipes proches d'une autre équipe
+## rechercher les équipes proches d'une autre équipe, renvoie 4 résultats au max
 GET /teams/{teamid}/proximity/teams
 
 * [http://10.12.1.135:9000/api/v1/teams/1/proximity/teams](http://10.12.1.135:9000/api/v1/teams/1/proximity/teams)
