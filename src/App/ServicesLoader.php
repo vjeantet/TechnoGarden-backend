@@ -26,6 +26,10 @@ class ServicesLoader
     	$this->app['technos.service'] = $this->app->share(function () {
       		return new Services\TechnosService($this->app["db"]);
        	});
+    	
+    	$this->app['search.service'] = $this->app->share(function () {
+    		return new Services\SearchService($this->app["db"]);
+    	});
     }
 }
 

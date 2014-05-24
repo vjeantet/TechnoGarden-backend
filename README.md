@@ -32,5 +32,9 @@ This is the README for the backend of Techno Garden :)
 |  rechercher les technos associées à une personne | GET|  /people/{username}/technos|  [http://10.12.1.135:9000/api/v1/people/vjeantet/technos](http://10.12.1.135:9000/api/v1/people/vjeantet/technos) | 
 |  recherche les technos d'une équipe utilisé par un de ses membres. | GET |  /teams/{name}/peoples/{username}/technos | *Not implemented yet* | 
 
+## recherche Globale
+| Description									 | Verb          | URL | example |
+| ------------- | ----------- | ----------- | ----------- |
+|  rechercher  Techno, Team, Personne (max 5 par type) | GET |  /search?q={term} |  [http://10.12.1.135:9000/api/v1/search?q=en](http://10.12.1.135:9000/api/v1/search?q=en) | 
 
  

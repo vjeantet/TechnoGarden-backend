@@ -31,6 +31,11 @@ class RoutesLoader
        	$this->app['technos.controller'] = $this->app->share(function () {
        		return new Controllers\TechnosController($this->app['technos.service']);
        	});
+       	
+       	//SEARCH
+       	$this->app['search.controller'] = $this->app->share(function () {
+       		return new Controllers\SearchController($this->app['search.service']);
+       	});
     }
 
     public function bindRoutesToControllers()
@@ -74,7 +79,10 @@ class RoutesLoader
         // recherche les technos d'une équipe utilisé par un de ses membres.
         $api->get('/teams/{name}/peoples/{username}/technos'	, "technos.controller:findByTeamByUsername");
         
-        
+        /**
+         * SEARCH
+         */
+        $api->get('/search','search.controller:findTechnosTeamsPeopleByTerm') ;
 /*
         $api->post('/notes', "notes.controller:save");
         $api->post('/notes/{id}', "notes.controller:update");
