@@ -1,7 +1,10 @@
+This is the README for the backend of Techno Garden :)
+
 # TechnoGarden API
 
 # People
 ## recherche une personne par son username
+
 
 ## rechercher des personnes par techno
 
