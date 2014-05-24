@@ -12,7 +12,7 @@ use App\ServicesLoader;
 use App\RoutesLoader;
 use Carbon\Carbon;
 
-date_default_timezone_set('Europe/London');
+date_default_timezone_set('Europe/Paris');
 
 define("ROOT_PATH", __DIR__ . "/..");
 

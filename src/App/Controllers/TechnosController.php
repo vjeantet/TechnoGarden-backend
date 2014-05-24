@@ -35,6 +35,18 @@ class TechnosController
 
     }
 
+    public function findByTeamName($name){
+    	return new JsonResponse($this->technosService->findByTeamName($name)) ;
+    }
+    
+    public function findByPeopleUsername($username)
+    {
+    	return new JsonResponse($this->technosService->findByPeopleUserName($username));
+    }
+    
+    
+    
+    
     public function update($id, Request $request)
     {
         $note = $this->getDataFromRequest($request);
