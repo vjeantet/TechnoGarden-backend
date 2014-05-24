@@ -17,6 +17,7 @@ This is the README for the backend of Techno Garden :)
 | Description									 | Verb          | URL | example |
 | ------------- | ----------- | ----------- | ----------- |
 | rechercher une équipe par son nom | GET| /teams/{name} | [http://10.12.1.135:9000/api/v1/teams/Techno%20Garden](http://10.12.1.135:9000/api/v1/teams/Techno%20Garden)|
+| rechercher une équipe par son id | GET| /teams/{id} | [http://10.12.1.135:9000/api/v1/teams/4](http://10.12.1.135:9000/api/v1/teams/4)|
 | rechercher les équipes associées à une techno|GET| /technos/{code}/teams| [http://10.12.1.135:9000/api/v1/technos/PHP/teams](http://10.12.1.135:9000/api/v1/technos/PHP/teams)|
 | rechercher les équipes proches d'une autre équipe, renvoie 4 résultats au max | GET | /teams/{teamid}/proximity/teams | [http://10.12.1.135:9000/api/v1/teams/1/proximity/teams](http://10.12.1.135:9000/api/v1/teams/1/proximity/teams) |
 

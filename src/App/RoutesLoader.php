@@ -53,7 +53,8 @@ class RoutesLoader
          * TEAMS
          */
         // rechercher une team par son nom
-        $api->get('/teams/{name}'			, "teams.controller:findOneByName");
+        $api->get('/teams/{id}'			, "teams.controller:findOneById")->assert('id', '\d');
+        $api->get('/teams/{name}'			, "teams.controller:findOneByName") ;
         // rechercher les equipes associées à une techno
         $api->get('/technos/{code}/teams'		, "teams.controller:findByTechnoCode");
         // recherche les equipes proches d'une autre equipe

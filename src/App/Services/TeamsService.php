@@ -23,7 +23,21 @@ class TeamsService extends BaseService
     	
     	return $team ;
     }
-
+    
+    public function findOneById($id)
+    {
+    	$team = $this->db->fetchAssoc('SELECT * FROM teams WHERE id = ?;',array($id)) ;
+    	$sql = 'SELECT t.*
+				FROM techno t
+				INNER JOIN team_techno tt ON tt.`id_team` = ? AND tt.`id_techno` = t.`id` ;
+    			';
+    	 
+    	$team_techno_list = $this->db->fetchAll($sql,array($id)) ;
+    	$team['technos'] = $team_techno_list ;
+    	 
+    	return $team ;
+    }
+    
     public function findByTechnoCode($code)
     {
     	$sql = 'SELECT *
