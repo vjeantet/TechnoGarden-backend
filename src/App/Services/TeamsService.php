@@ -12,7 +12,16 @@ class TeamsService extends BaseService
     
     public function findOneByName($name)
     {
-    	return $this->db->fetchAssoc('SELECT * FROM teams WHERE name = ?;',array($name)) ;
+    	$team = $this->db->fetchAssoc('SELECT * FROM teams WHERE name = ?;',array($name)) ;
+    	$sql = 'SELECT t.*
+				FROM techno t 
+				INNER JOIN team_techno tt ON tt.`id_team` = ? AND tt.`id_techno` = t.`id` ;
+    			';
+    	
+    	$team_techno_list = $this->db->fetchAll($sql,array($team['id'])) ;
+    	$team['technos'] = $team_techno_list ;
+    	
+    	return $team ;
     }
 
     public function findByTechnoCode($code)
