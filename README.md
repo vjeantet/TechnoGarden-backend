@@ -3,20 +3,13 @@ This is the README for the backend of Techno Garden :)
 # TechnoGarden API
 
 # People
-## recherche une personne par son username
-GET /people/{username}
+## 
 
-* [http://10.12.1.135:9000/api/v1/people/vjeantet](http://10.12.1.135:9000/api/v1/people/vjeantet)
-
-## rechercher des personnes qui appartiennent à une équipe
-GET /teams/{name}/people
-
-* [http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/people](http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/people)
-
-## rechercher des personnes par techno
-GET /technos/{code}/people
-
-* [http://10.12.1.135:9000/api/v1/technos/PHP/people](http://10.12.1.135:9000/api/v1/technos/PHP/people)
+| Description									 | Verb          | URL | example |
+| ------------- | ----------- |
+| recherche une personne par son username	     | GET |  /people/{username} | [http://10.12.1.135:9000/api/v1/people/vjeantet](http://10.12.1.135:9000/api/v1/people/vjeantet) |
+| rechercher des personnes qui appartiennent à une équipe|GET| /teams/{name}/people | [http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/people](http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/people) |
+| rechercher des personnes par techno | GET| /technos/{code}/people | [http://10.12.1.135:9000/api/v1/technos/PHP/people](http://10.12.1.135:9000/api/v1/technos/PHP/people) |
 
 # Team
 ## rechercher une équipe par son nom
@@ -30,10 +23,9 @@ GET /technos/{code}/teams
 * [http://10.12.1.135:9000/api/v1/technos/PHP/teams](http://10.12.1.135:9000/api/v1/technos/PHP/teams)
 
 ## rechercher les équipes proches d'une autre équipe
-GET /teams/{name}/proximity/teams
-*Not implemented yet*
+GET /teams/{teamid}/proximity/teams
 
-* [http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/proximity/teams](http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/proximity/teams)
+* [http://10.12.1.135:9000/api/v1/teams/1/proximity/teams](http://10.12.1.135:9000/api/v1/teams/1/proximity/teams)
 
 # Techno
 
@@ -58,4 +50,3 @@ GET /teams/{name}/peoples/{username}/technos
 
 *Not implemented yet*
  
-# R00X !
