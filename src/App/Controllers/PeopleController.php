@@ -21,6 +21,13 @@ class PeopleController
         $this->peopleService = $service;
     }
     
+    public function findAllOrderByNameLastname()
+    {
+    	$person = $this->peopleService->findAllOrderByNameLastname() ;
+    
+    	return new JsonResponse($person);
+    }
+    
     public function findOneByUsername($username)
     {
     	$person = $this->peopleService->findOneByUsername($username) ;

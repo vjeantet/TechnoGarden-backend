@@ -15,6 +15,16 @@ class PeopleService extends BaseService
     	return $this->db->fetchAssoc('SELECT * FROM users WHERE username = ?;',array($username)) ;
     }
     
+    public function findAllOrderByNameLastname()
+    {
+    	$sql = 'SELECT u.*, ut.id_team
+    				FROM users u
+    				JOIN user_team ut on ut.id_user = u.id
+    				ORDER BY lastname, firstname';
+    	
+    	return $this->db->fetchAll($sql) ;
+    }
+    
     public function findByTeamname($name)
     {
     	$sql='SELECT *

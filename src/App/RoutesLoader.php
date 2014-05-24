@@ -41,6 +41,8 @@ class RoutesLoader
          * PEOPLE
          */
         // rechercher personne by username
+        $api->get('/people'			, "people.controller:findAllOrderByNameLastname");
+        // rechercher personne by username
         $api->get('/people/{username}'			, "people.controller:findOneByUsername");
         // rechercher les personnes d'une team particuliere
         $api->get('/teams/{name}/people'	, "people.controller:findByTeamName");        
