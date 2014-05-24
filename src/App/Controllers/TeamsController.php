@@ -37,11 +37,10 @@ class TeamsController
      * @param string $name
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function findByProximityByName($name)
+    public function findByProximityById($teamid)
     {
-    	return new JsonResponse($this->teamsService->findProximitiesByName($name));
+    	return new JsonResponse($this->teamsService->findProximitiesById($teamid));
     }
-    
     
     public function save(Request $request)
     {

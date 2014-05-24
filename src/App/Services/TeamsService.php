@@ -37,12 +37,19 @@ class TeamsService extends BaseService
     
     /**
      * retourne les teams proches d'une team donnée par son nom
-     * @param string $name
+     * @param integer $teamid
      * @return array of teams
      */
-    public function findProximitiesByName($name)
+    public function findProximitiesById($teamid)
     {
-    	//@todo algo SQL en cours de redaction par Thomas
+    	$sql = 'SELECT t.*
+					FROM teams t
+					JOIN team_distance td ON t.id = td.id_team2
+					WHERE td.id_team1 = ?
+					ORDER BY td.common_technos DESC, td.different_technos ASC
+					LIMIT 3;';
+    	
+    	return $this->db->fetchAll($sql,array($teamid)) ;
     }
     
     function save($person)
