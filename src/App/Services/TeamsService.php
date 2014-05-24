@@ -63,7 +63,23 @@ class TeamsService extends BaseService
 					ORDER BY td.common_technos DESC, td.different_technos ASC
 					LIMIT 4;';
     	
-    	return $this->db->fetchAll($sql,array($teamid)) ;
+    	$team_list_tmp = $this->db->fetchAll($sql,array($teamid)) ;
+    	
+    	$sql = 'SELECT t.*
+				FROM techno t
+				INNER JOIN team_techno tt ON tt.`id_team` = ? AND tt.`id_techno` = t.`id` ;
+    			';
+    	
+    	$team_list = array() ;
+    	foreach($team_list_tmp as $k => $team)
+    	{
+    		unset($k) ;
+    		$team_techno_list = $this->db->fetchAll($sql,array($team['id'])) ;
+    		$team['technos'] = $team_techno_list ;
+    		$team_list[] = $team ;
+    	}
+    
+    	return $team_list ;
     }
     
     function save($person)
