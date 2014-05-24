@@ -34,7 +34,13 @@ class PeopleController
 
     	return new JsonResponse($person);
     }
-
+	public function findByTeamId($id)
+	{
+		$person_list = $this->peopleService->findByTeamId($id) ;
+		 
+		return new JsonResponse($person_list);
+	}
+	
     public function findByTeamName($name)
     {
     	$person_list = $this->peopleService->findByTeamname($name) ;

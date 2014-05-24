@@ -35,6 +35,16 @@ class PeopleService extends BaseService
      	return $this->db->fetchAll($sql,array($name)) ;
     }
     
+    public function findByTeamId($id)
+    {
+    	$sql='SELECT *
+				FROM users u 
+				INNER JOIN teams t ON t.`name` = u.`teamname`
+				WHERE t.`id` = ?;';
+    	
+     	return $this->db->fetchAll($sql,array($id)) ;
+    }
+    
     public function findByTechnoCode($code)
     {
     	$sql='SELECT *

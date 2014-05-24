@@ -45,6 +45,7 @@ class RoutesLoader
         // rechercher personne by username
         $api->get('/people/{username}'			, "people.controller:findOneByUsername");
         // rechercher les personnes d'une team particuliere
+        $api->get('/teams/{id}/people'	, "people.controller:findByTeamId")->assert('id', '\d');
         $api->get('/teams/{name}/people'	, "people.controller:findByTeamName");        
         // rechercher les personnes associées à une techno
         $api->get('/technos/{code}/people'		, "people.controller:findByTechnoCode");
