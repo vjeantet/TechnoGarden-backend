@@ -30,10 +30,10 @@ GET /technos/{code}/teams
 * [http://10.12.1.135:9000/api/v1/technos/PHP/teams](http://10.12.1.135:9000/api/v1/technos/PHP/teams)
 
 ## rechercher les équipes proches d'une autre équipe
-GET /teams/{name}/proximity/teams
+GET /teams/{teamid}/proximity/teams
 *Not implemented yet*
 
-* [http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/proximity/teams](http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/proximity/teams)
+* [http://10.12.1.135:9000/api/v1/teams/1/proximity/teams](http://10.12.1.135:9000/api/v1/teams/1/proximity/teams)
 
 # Techno
 
@@ -58,4 +58,3 @@ GET /teams/{name}/peoples/{username}/technos
 
 *Not implemented yet*
  
-# R00X !
