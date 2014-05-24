@@ -54,6 +54,8 @@ class RoutesLoader
         $api->get('/teams/{name}'			, "teams.controller:findOneByName");
         // rechercher les equipes associées à une techno
         $api->get('/technos/{code}/teams'		, "teams.controller:findByTechnoCode");
+        // recherche les equipes proches d'une autre equipe
+        $api->get('/teams/{name}/proximity/teams', "teams.controller:findByProximityByName") ;
                 
         /**
          * TECHNO - ASSETS

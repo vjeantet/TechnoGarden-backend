@@ -32,7 +32,15 @@ class TeamsController
     	return new JsonResponse($this->teamsService->findByTechnoCode($code));
     }
     
-    
+    /**
+     * Retourne la liste des equipes proches d'une premiere equipe
+     * @param string $name
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function findByProximityByName($name)
+    {
+    	return new JsonResponse($this->teamsService->findProximitiesByName($name));
+    }
     
     
     public function save(Request $request)

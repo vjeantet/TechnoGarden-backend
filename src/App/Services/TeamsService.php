@@ -26,6 +26,16 @@ class TeamsService extends BaseService
     	return $this->db->fetchAll($sql,array($code)) ;	
     }
     
+    /**
+     * retourne les teams proches d'une team donnée par son nom
+     * @param string $name
+     * @return array of teams
+     */
+    public function findProximitiesByName($name)
+    {
+    	//@todo algo SQL en cours de redaction par Thomas
+    }
+    
     function save($person)
     {
         $this->db->insert("people", $person);
