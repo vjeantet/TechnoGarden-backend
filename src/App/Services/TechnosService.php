@@ -40,7 +40,7 @@ class TechnosService extends BaseService
 				FROM techno t
 				INNER JOIN `team_techno` tt ON tt.`id_techno` = t.`id`
 				INNER JOIN `teams` tea ON tea.`id` = tt.`id_team` 
-				INNER JOIN users u ON u.`teamname` = tea.`name` 
+				INNER JOIN users u ON u.`id_team` = tea.`id` 
 				WHERE u.`username`= ?;' ;
     	 
     	 

@@ -17,10 +17,10 @@ class PeopleService extends BaseService
     
     public function findAllOrderByNameLastname()
     {
-    	$sql = 'SELECT u.*, ut.id_team
-    				FROM users u
-    				JOIN user_team ut on ut.id_user = u.id
-    				ORDER BY lastname, firstname';
+    	$sql = 'SELECT u.*,t.name as teamname
+				FROM users u
+				INNER JOIN teams t ON t.id = u.id_team			
+				ORDER BY t.name, lastname, firstname';
     	
     	return $this->db->fetchAll($sql) ;
     }
@@ -29,7 +29,7 @@ class PeopleService extends BaseService
     {
     	$sql='SELECT *
 				FROM users u 
-				INNER JOIN teams t ON t.`name` = u.`teamname`
+				INNER JOIN teams t ON t.`id` = u.`id_team`
 				WHERE t.`name` = ?;';
     	
      	return $this->db->fetchAll($sql,array($name)) ;
@@ -39,8 +39,7 @@ class PeopleService extends BaseService
     {
     	$sql='SELECT *
 				FROM users u 
-				INNER JOIN teams t ON t.`name` = u.`teamname`
-				WHERE t.`id` = ?;';
+				WHERE u.`id_team` = ?;';
     	
      	return $this->db->fetchAll($sql,array($id)) ;
     }
@@ -49,8 +48,7 @@ class PeopleService extends BaseService
     {
     	$sql='SELECT *
 				FROM users u 
-				INNER JOIN `user_team` ut ON ut.`id_user` = u.`id`
-				INNER JOIN `team_techno` tt ON tt.`id_team` = ut.`id_team`
+				INNER JOIN `team_techno` tt ON tt.`id_team` = u.`id_team`
 				INNER JOIN techno t ON t.`id` = tt.`id_techno`
 				WHERE
 				t.`code` = ?;';
