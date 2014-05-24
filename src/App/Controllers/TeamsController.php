@@ -32,7 +32,10 @@ class TeamsController
     	return new JsonResponse($this->teamsService->findByTechnoCode($code));
     }
     
-    
+    public function findClosestTeams($teamid)
+    {
+    	return new JsonResponse($this->teamsService->findClosestTeams($teamid));
+    }
     
     
     public function save(Request $request)

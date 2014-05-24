@@ -26,6 +26,18 @@ class TeamsService extends BaseService
     	return $this->db->fetchAll($sql,array($code)) ;	
     }
     
+    public function findClosestTeams($teamid)
+    {
+    	$sql = 'SELECT t.*
+					FROM teams t
+					JOIN team_distance td ON t.id = td.id_team2
+					WHERE td.id_team1 = ?
+					ORDER BY td.common_technos DESC, td.different_technos ASC
+					LIMIT 3;';
+    	
+    	return $this->db->fetchAll($sql,array($teamid)) ;
+    }
+    
     function save($person)
     {
         $this->db->insert("people", $person);
