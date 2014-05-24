@@ -3,7 +3,7 @@ This is the README for the backend of Techno Garden :)
 # TechnoGarden API
 
 # People
-
+## Recherche
 
 | Description									 | Verb          | URL | example |
 | ------------- | ----------- | ----------- | ----------- |
@@ -12,6 +12,7 @@ This is the README for the backend of Techno Garden :)
 | rechercher des personnes par techno | GET| /technos/{code}/people | [http://10.12.1.135:9000/api/v1/technos/PHP/people](http://10.12.1.135:9000/api/v1/technos/PHP/people) |
 
 # Team
+## Recherche
 | Description									 | Verb          | URL | example |
 | ------------- | ----------- | ----------- | ----------- |
 | rechercher une équipe par son nom | GET| /teams/{name} | [http://10.12.1.135:9000/api/v1/teams/Techno%20Garden](http://10.12.1.135:9000/api/v1/teams/Techno%20Garden)|
@@ -19,6 +20,7 @@ This is the README for the backend of Techno Garden :)
 | rechercher les équipes proches d'une autre équipe, renvoie 4 résultats au max | GET | /teams/{teamid}/proximity/teams | [http://10.12.1.135:9000/api/v1/teams/1/proximity/teams](http://10.12.1.135:9000/api/v1/teams/1/proximity/teams) |
 
 # Techno
+## Recherche
 | Description									 | Verb          | URL | example |
 | ------------- | ----------- | ----------- | ----------- |
 |  rechercher une techno par son code | GET |  /technos/{code} |  [http://10.12.1.135:9000/api/v1/technos/PHP](http://10.12.1.135:9000/api/v1/technos/PHP) | 
