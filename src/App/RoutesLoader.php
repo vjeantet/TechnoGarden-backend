@@ -67,6 +67,7 @@ class RoutesLoader
         // rechercher une techno par son nom
         $api->get('/technos/{code}'				, "technos.controller:findOneByCode");
         // rechercher les technos d'une team particuliere
+        $api->get('/teams/{id}/technos'	, "technos.controller:findByTeamId")->assert('id', '\d');
         $api->get('/teams/{name}/technos'	, "technos.controller:findByTeamName");
         // rechercher les technos d'une personne particuliere
         $api->get('/people/{username}/technos'	, "technos.controller:findByPeopleUsername");  

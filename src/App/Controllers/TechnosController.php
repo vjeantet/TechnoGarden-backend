@@ -39,6 +39,11 @@ class TechnosController
     	return new JsonResponse($this->technosService->findByTeamName($name)) ;
     }
     
+    public function findByTeamId($id)
+    {
+    	return new JsonResponse($this->technosService->findByTeamId($id)) ;
+    }
+    
     public function findByPeopleUsername($username)
     {
     	return new JsonResponse($this->technosService->findByPeopleUserName($username));
