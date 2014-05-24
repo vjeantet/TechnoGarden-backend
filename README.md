@@ -31,7 +31,6 @@ GET /technos/{code}/teams
 
 ## rechercher les équipes proches d'une autre équipe
 GET /teams/{teamid}/proximity/teams
-*Not implemented yet*
 
 * [http://10.12.1.135:9000/api/v1/teams/1/proximity/teams](http://10.12.1.135:9000/api/v1/teams/1/proximity/teams)
 
