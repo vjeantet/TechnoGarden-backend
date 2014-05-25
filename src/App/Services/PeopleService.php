@@ -56,6 +56,23 @@ class PeopleService extends BaseService
     	return $this->db->fetchAll($sql,array($code)) ;
     }
 
+    public function updateDescription($id, $description){
+        $userDesc = array(
+            'id'   => $id,
+            'description' => $description,
+        );
+        $types = array(
+                'id' => PDO::PARAM_INT,
+                'description' => PDO::PARAM_STR,
+        );
+
+        $sql = 'UPDATE users
+        SET description = ?
+        WHERE id = ?;';
+        
+        return $this->db->query($sql, $userDesc, $types);
+    }
+
     function save($person)
     {
         $this->db->insert("people", $person);

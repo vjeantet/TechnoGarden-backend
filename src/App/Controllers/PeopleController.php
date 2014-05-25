@@ -90,4 +90,10 @@ class PeopleController
             "note" => $request->request->get("person")
         );
     }
+
+    public function updateDescription($id, Request $request)
+    {
+        $this->peopleService->updateDescription($id, $request->request->get("description"));
+        return true;
+    }
 }

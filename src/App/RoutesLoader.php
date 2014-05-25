@@ -59,6 +59,8 @@ class RoutesLoader
         $api->get('/teams/{name}/people'	, "people.controller:findByTeamName");        
         // rechercher les personnes associées à une techno
         $api->get('/technos/{code}/people'		, "people.controller:findByTechnoCode");
+        // update une description
+        $api->post('/people/{id}/description'   , "people.controller:updateDescription");
         
         /**
          * TEAMS
