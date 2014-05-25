@@ -83,6 +83,8 @@ class RoutesLoader
         $api->get('/people/{username}/technos'	, "technos.controller:findByPeopleUsername");  
         // recherche les technos d'une équipe utilisé par un de ses membres.
         $api->get('/teams/{name}/peoples/{username}/technos'	, "technos.controller:findByTeamByUsername");
+        // recherche tous les technos present
+        $api->get('/technos'    , "technos.controller:getTechnos");
 
         /**
         * EVENTS 

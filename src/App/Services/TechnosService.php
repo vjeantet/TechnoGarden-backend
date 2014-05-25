@@ -46,6 +46,11 @@ class TechnosService extends BaseService
     	 
     	return $this->db->fetchAll($sql,array($username)) ;
     }
+
+    public function getTechnos()
+    {
+        return $this->db->fetchAll("SELECT * FROM techno");
+    }
     
     
     function save($person)
