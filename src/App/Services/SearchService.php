@@ -43,22 +43,18 @@ class SearchService extends BaseService
 				LIMIT 5		' ;
 		$techno_list = $this->db->fetchAll($sql,array('%'.$term.'%','%'.$term.'%','%'.$term.'%','%'.$term.'%')) ;
 		
-		$sql = 'SELECT u.* 
-FROM users u 
-LEFT JOIN team_techno tt ON tt.`id_team` = u.`id_team`
-LEFT JOIN techno tek ON tek.`id` = tt.`id_techno` 
-
-WHERE
-				u.`description` like ?
-				OR u.`firstname` like ?
-				OR u.`username` like ?
-				OR u.`twittername` like ?
-OR				
-( tek.`code` like ? OR tek.`label` like ? OR tek.`type` like ? OR tek.`description` like ?)
-
-LIMIT 5';
+		$sql = 'SELECT distinct u.* 
+				FROM users u 
+				LEFT JOIN team_techno tt ON tt.`id_team` = u.`id_team`
+				LEFT JOIN techno tek ON tek.`id` = tt.`id_techno` 
+				
+				WHERE
+								
+				( tek.`code` like ? OR tek.`label` like ? OR tek.`type` like ? OR tek.`description` like ?)
+				
+				LIMIT 5';
 		
-		$person_list = $this->db->fetchAll($sql,array('%'.$term.'%','%'.$term.'%','%'.$term.'%','%'.$term.'%','%'.$term.'%','%'.$term.'%','%'.$term.'%','%'.$term.'%')) ;
+		$person_list = $this->db->fetchAll($sql,array('%'.$term.'%','%'.$term.'%','%'.$term.'%','%'.$term.'%')) ;
 		
 		return array(
 			'teams' 	=> $team_list,
