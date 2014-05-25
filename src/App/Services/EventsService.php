@@ -48,11 +48,20 @@ class EventsService extends BaseService
 	public function getProximityEvents($team_ids)
 	{
 		$sql = "SELECT e.*, TRIM(CONCAT(u.firstname,' ',u.`lastname`)) as 'author'
-FROM event e
-INNER JOIN users u ON u.`id` = e.user_id
-WHERE e.team_id IN (:teamids)
-ORDER BY created_on DESC;";
+		FROM event e
+		INNER JOIN users u ON u.`id` = e.user_id
+		WHERE e.team_id IN (:teamids)
+		ORDER BY created_on DESC;";
+		$event_list_tmp = $this->db->fetchAll($sql, array('teamids' => $team_ids), array('teamids' => Connection::PARAM_INT_ARRAY)) ;
+		
+		$event_list = array() ;
+		foreach ($event_list_tmp as $k => $event)
+		{
+			unset($k) ;
+			$event['technos'] = $this->db->fetchAll('SELECT t.* FROM techno t INNER JOIN event_techno et ON et.id_techno = t.id AND et.id_event = ? ',array($event['id']))	;
+			$event_list[] = $event ;
+		}
 
-		return $this->db->fetchAll($sql, array('teamids' => $team_ids), array('teamids' => Connection::PARAM_INT_ARRAY));
+		return $event_list;
 	}
 }
