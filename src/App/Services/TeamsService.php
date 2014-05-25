@@ -82,6 +82,16 @@ class TeamsService extends BaseService
     	return $team_list ;
     }
     
+    public function insertTechnoByTechnoId($team_id,$techno_id,$level_usage=null){
+    	$team_techno = array(
+    		'id_team'   => $team_id,
+    		'id_techno' => $techno_id,
+    		'level_usage' => $level_usage	
+    	);
+    	
+    	return $this->db->insert("team_techno", $team_techno);
+    }
+    
     function save($person)
     {
         $this->db->insert("people", $person);
