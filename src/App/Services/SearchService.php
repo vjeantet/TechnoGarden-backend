@@ -43,8 +43,9 @@ class SearchService extends BaseService
 				LIMIT 5		' ;
 		$techno_list = $this->db->fetchAll($sql,array('%'.$term.'%','%'.$term.'%','%'.$term.'%','%'.$term.'%')) ;
 		
-		$sql = 'SELECT distinct u.* 
+		$sql = 'SELECT distinct u.*, t.name as teamname 
 				FROM users u 
+				LEFT JOIN teams t ON t.id = u.id_team
 				LEFT JOIN team_techno tt ON tt.`id_team` = u.`id_team`
 				LEFT JOIN techno tek ON tek.`id` = tt.`id_techno` 
 				
