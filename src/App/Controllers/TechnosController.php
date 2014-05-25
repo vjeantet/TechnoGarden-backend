@@ -48,6 +48,11 @@ class TechnosController
     {
     	return new JsonResponse($this->technosService->findByPeopleUserName($username));
     }
+
+    public function getTechnos()
+    {
+        return new JsonResponse($this->technosService->getTechnos());
+    }
     
     
     

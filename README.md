@@ -31,6 +31,7 @@ This is the README for the backend of Techno Garden :)
 |  rechercher les technos associées à un nom d'equipe | GET |  /teams/{name}/technos | [http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/technos](http://10.12.1.135:9000/api/v1/teams/Techno%20Garden/technos) | 
 |  rechercher les technos associées à une personne | GET|  /people/{username}/technos|  [http://10.12.1.135:9000/api/v1/people/vjeantet/technos](http://10.12.1.135:9000/api/v1/people/vjeantet/technos) | 
 |  recherche les technos d'une équipe utilisé par un de ses membres. | GET |  /teams/{name}/peoples/{username}/technos | *Not implemented yet* | 
+|  recherche tous les technos dans la base. | GET |  /technos | [http://local.42.fr:9000/api/v1/technos](http://local.42.fr:9000/api/v1/technos)| 
 
 # Events
 ## Recherche
@@ -40,9 +41,16 @@ This is the README for the backend of Techno Garden :)
 |  créer un nouvel événement | PUT |  /events |  [http://10.12.1.135:9000/api/v1/events](http://10.12.1.135:9000/api/v1/events) | 
 |  effacer tous les événements | GET |  /deleteevents |  [http://10.12.1.135:9000/api/v1/deleteevents](http://10.12.1.135:9000/api/v1/deleteevents) | 
 
-## recherche Globale
+## Creation
+| Description									 | Verb          | URL | example |
+| ------------- | ----------- | ----------- | ----------- |
+| créer un evenement | PUT |  /events |  [http://10.12.1.135:9000/api/v1/events](http://10.12.1.135:9000/api/v1/events) | 
+
+
+# recherche Globale
 | Description									 | Verb          | URL | example |
 | ------------- | ----------- | ----------- | ----------- |
 |  rechercher  Techno, Team, Personne (max 5 par type) | GET |  /search?q={term} |  [http://10.12.1.135:9000/api/v1/search?q=en](http://10.12.1.135:9000/api/v1/search?q=en) | 
+|  rechercher les evenements associés à une équipe | GET |  teams/{teamid}/events |  [http://10.12.1.135:9000/api/v1/teams/1/events](http://10.12.1.135:9000/teams/1/events) | 
 
  
