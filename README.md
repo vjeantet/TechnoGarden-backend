@@ -37,7 +37,7 @@ This is the README for the backend of Techno Garden :)
 ## Recherche
 | Description									 | Verb          | URL | example |
 | ------------- | ----------- | ----------- | ----------- |
-|  rechercher les événements de mon équipe et des équipes proches | GET |  /team/{teamid}/events |  [http://10.12.1.135:9000/api/v1/team/4/events](http://10.12.1.135:9000/api/v1/team/4/events) | 
+|  rechercher les événements de mon équipe et des équipes proches | GET |  /team/{teamid}/events |  [http://10.12.1.135:9000/api/v1/teams/4/events](http://10.12.1.135:9000/api/v1/teams/4/events) | 
 |  créer un nouvel événement | PUT |  /events |  [http://10.12.1.135:9000/api/v1/events](http://10.12.1.135:9000/api/v1/events) | 
 |  effacer tous les événements | GET |  /deleteevents |  [http://10.12.1.135:9000/api/v1/deleteevents](http://10.12.1.135:9000/api/v1/deleteevents) | 
 
