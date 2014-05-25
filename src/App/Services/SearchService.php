@@ -7,7 +7,7 @@ class SearchService extends BaseService
 	public function findTechnosTeamsPeopleByTerm($term)
 	{
 
-		$sql = 'SELECT t.* 
+		$sql = 'SELECT distinct t.* 
 				FROM teams t 
 				LEFT JOIN team_techno tt ON tt.`id_team` = t.`id`
 				LEFT JOIN techno tek ON tek.`id` = tt.`id_techno` 
@@ -53,7 +53,7 @@ class SearchService extends BaseService
 								
 				( tek.`code` like ? OR tek.`label` like ? OR tek.`type` like ? OR tek.`description` like ?)
 				
-				LIMIT 5';
+				LIMIT 7';
 		
 		$person_list = $this->db->fetchAll($sql,array('%'.$term.'%','%'.$term.'%','%'.$term.'%','%'.$term.'%')) ;
 		
