@@ -497,7 +497,7 @@ INSERT INTO `user_techno` (`id_user`, `id_techno`, `created_on`, `level_interest
 --
 DROP TABLE IF EXISTS `team_common_technos`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`technogarden`@`%` SQL SECURITY DEFINER VIEW `team_common_technos` AS select `t1`.`id` AS `id_team1`,`t2`.`id` AS `id_team2`,count(distinct `te`.`id`) AS `common_technos` from ((((`teams` `t1` join `team_techno` `tt1` on((`tt1`.`id_team` = `t1`.`id`))) join `techno` `te` on((`te`.`id` = `tt1`.`id_techno`))) join `team_techno` `tt2` on((`tt2`.`id_techno` = `te`.`id`))) join `teams` `t2` on(((`t2`.`id` = `tt2`.`id_team`) and (`tt2`.`id_team` <> `tt1`.`id_team`)))) group by `t1`.`id`,`t2`.`id`;
+CREATE VIEW `team_common_technos` AS select `t1`.`id` AS `id_team1`,`t2`.`id` AS `id_team2`,count(distinct `te`.`id`) AS `common_technos` from ((((`teams` `t1` join `team_techno` `tt1` on((`tt1`.`id_team` = `t1`.`id`))) join `techno` `te` on((`te`.`id` = `tt1`.`id_techno`))) join `team_techno` `tt2` on((`tt2`.`id_techno` = `te`.`id`))) join `teams` `t2` on(((`t2`.`id` = `tt2`.`id_team`) and (`tt2`.`id_team` <> `tt1`.`id_team`)))) group by `t1`.`id`,`t2`.`id`;
 
 -- --------------------------------------------------------
 
@@ -506,7 +506,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`technogarden`@`%` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `team_distance`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`technogarden`@`%` SQL SECURITY DEFINER VIEW `team_distance` AS select `ct`.`id_team1` AS `id_team1`,`ct`.`id_team2` AS `id_team2`,`ct`.`common_technos` AS `common_technos`,(((`tt1`.`total_technos` - `ct`.`common_technos`) + `tt2`.`total_technos`) - `ct`.`common_technos`) AS `different_technos` from ((`team_common_technos` `ct` join `team_total_technos` `tt1` on((`tt1`.`id_team` = `ct`.`id_team1`))) join `team_total_technos` `tt2` on((`tt2`.`id_team` = `ct`.`id_team2`)));
+CREATE VIEW `team_distance` AS select `ct`.`id_team1` AS `id_team1`,`ct`.`id_team2` AS `id_team2`,`ct`.`common_technos` AS `common_technos`,(((`tt1`.`total_technos` - `ct`.`common_technos`) + `tt2`.`total_technos`) - `ct`.`common_technos`) AS `different_technos` from ((`team_common_technos` `ct` join `team_total_technos` `tt1` on((`tt1`.`id_team` = `ct`.`id_team1`))) join `team_total_technos` `tt2` on((`tt2`.`id_team` = `ct`.`id_team2`)));
 
 -- --------------------------------------------------------
 
@@ -515,7 +515,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`technogarden`@`%` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `team_total_technos`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`technogarden`@`%` SQL SECURITY DEFINER VIEW `team_total_technos` AS select `tt`.`id_team` AS `id_team`,count(distinct `tt`.`id_techno`) AS `total_technos` from `team_techno` `tt` group by `tt`.`id_team`;
+CREATE VIEW `team_total_technos` AS select `tt`.`id_team` AS `id_team`,count(distinct `tt`.`id_techno`) AS `total_technos` from `team_techno` `tt` group by `tt`.`id_team`;
 
 --
 -- Constraints for dumped tables
