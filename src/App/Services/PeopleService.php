@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+use PDO;
 
 class PeopleService extends BaseService
 {
@@ -58,19 +59,11 @@ class PeopleService extends BaseService
 
     public function updateDescription($id, $description){
         $userDesc = array(
-            'id'   => $id,
             'description' => $description,
-        );
-        $types = array(
-                'id' => PDO::PARAM_INT,
-                'description' => PDO::PARAM_STR,
+        	'id'   => $id
         );
 
-        $sql = 'UPDATE users
-        SET description = ?
-        WHERE id = ?;';
-        
-        return $this->db->query($sql, $userDesc, $types);
+        return $this->db->update('users', $userDesc,  ['id' => $id]);
     }
 
     function save($person)
