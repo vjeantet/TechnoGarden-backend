@@ -13,6 +13,12 @@ This is the README for the backend of Techno Garden :)
 | rechercher des personnes qui appartiennent à un id d'équipe|GET| /teams/{id}/people | [http://10.12.1.135:9000/api/v1/teams/1/people](http://10.12.1.135:9000/api/v1/teams/1/people) |
 | rechercher des personnes par techno | GET| /technos/{code}/people | [http://10.12.1.135:9000/api/v1/technos/PHP/people](http://10.12.1.135:9000/api/v1/technos/PHP/people) |
 
+## Modifications
+
+| Description									 | Verb          | URL | example |
+| ------------- | ----------- | ----------- | ----------- |
+| Update une description dans une profile | POST | /people/{id}/description | [http://10.12.1.135:9000/api/v1/people/1/description](http://10.12.1.135:9000/api/v1/people/1/description) payload : {"description":"text"} |
+
 # Team
 ## Recherche
 | Description									 | Verb          | URL | example |
@@ -21,6 +27,16 @@ This is the README for the backend of Techno Garden :)
 | rechercher une équipe par son id | GET| /teams/{id} | [http://10.12.1.135:9000/api/v1/teams/4](http://10.12.1.135:9000/api/v1/teams/4)|
 | rechercher les équipes associées à une techno|GET| /technos/{code}/teams| [http://10.12.1.135:9000/api/v1/technos/PHP/teams](http://10.12.1.135:9000/api/v1/technos/PHP/teams)|
 | rechercher les équipes proches d'une autre équipe, renvoie 4 résultats au max | GET | /teams/{teamid}/proximity/teams | [http://10.12.1.135:9000/api/v1/teams/1/proximity/teams](http://10.12.1.135:9000/api/v1/teams/1/proximity/teams) |
+
+## Modifications
+
+| Description									 | Verb          | URL | example |
+| ------------- | ----------- | ----------- | ----------- |
+| Ajouter une techno à une equipe | PUT | /teams/{id}/technos | [http://10.12.1.135:9000/api/v1/teams/1/technos](http://10.12.1.135:9000/api/v1/teams/1/technos) payload : {"techno_id":108} ou {"techno_id":108, "level_usage":"4"} |
+| Ajouter une techno à une equipe | PUT | /teams/{id}/technos/{techno_id} | [http://10.12.1.135:9000/api/v1/teams/1/technos/94](http://10.12.1.135:9000/api/v1/teams/1/technos/94) payload : rien ou {"level_usage":"4"} |
+| Retirer une techno d'une equipe | DELETE | /teams/{id}/technos/{techno_code} | [http://10.12.1.135:9000/api/v1/teams/1/technos/docker](http://10.12.1.135:9000/api/v1/teams/1/technos/docker)  |
+
+
 
 # Techno
 ## Recherche

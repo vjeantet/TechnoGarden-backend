@@ -59,6 +59,8 @@ class RoutesLoader
         $api->get('/teams/{name}/people'	, "people.controller:findByTeamName");        
         // rechercher les personnes associées à une techno
         $api->get('/technos/{code}/people'		, "people.controller:findByTechnoCode");
+        // update une description
+        $api->post('/people/{id}/description'   , "people.controller:updateDescription");
         
         /**
          * TEAMS
@@ -70,7 +72,15 @@ class RoutesLoader
         $api->get('/technos/{code}/teams'		, "teams.controller:findByTechnoCode");
         // recherche les equipes proches d'une autre equipe
         $api->get('/teams/{teamid}/proximity/teams', "teams.controller:findByProximityById")->assert('teamid', '\d+');
-                
+
+        
+        // Ajouter techno a une equipe
+        $api->put('/teams/{id}/technos', "teams.controller:addTechnoByTechnoId");
+        $api->put('/teams/{id}/technos/{techno_id}', "teams.controller:addTechnoByTechnoId2");
+        
+        // Retirer techno a une equipe
+        $api->delete('/teams/{id}/technos/{techno_id}', 'teams.controller:removeTechnoByTechnoId') ;
+        
         /**
          * TECHNO - ASSETS
          */

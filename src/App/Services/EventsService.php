@@ -47,7 +47,7 @@ class EventsService extends BaseService
 
 	public function getProximityEvents($team_ids)
 	{
-		$sql = "SELECT e.*, TRIM(CONCAT(u.firstname,' ',u.`lastname`)) as 'author'
+		$sql = "SELECT e.*, TRIM(CONCAT(u.firstname,' ',u.`lastname`)) as 'author', u.username as 'author_username'
 		FROM event e
 		INNER JOIN users u ON u.`id` = e.user_id
 		WHERE e.team_id IN (:teamids)

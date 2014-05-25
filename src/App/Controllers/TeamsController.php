@@ -47,6 +47,27 @@ class TeamsController
     	return new JsonResponse($this->teamsService->findProximitiesById($teamid));
     }
     
+    
+    
+    public function addTechnoByTechnoId($id, Request $request)
+    {
+    	$techno_id = $request->get('techno_id');
+    	$level_usage = $request->get('level_usage');
+    	
+    	return new JsonResponse($this->teamsService->insertTechnoByTechnoId($id, $techno_id,$level_usage)) ;
+    }
+    
+	public function addTechnoByTechnoId2($id, $techno_id, Request $request)
+    {
+    	$level_usage = $request->get('level_usage');
+    	return new JsonResponse($this->teamsService->insertTechnoByTechnoId($id, $techno_id,$level_usage)) ;
+    }
+    
+    public function removeTechnoByTechnoId($id,$techno_id)
+    {
+    	return new JsonResponse($this->teamsService->deleteTeamTechnoByTechnoId($id,$techno_id));
+    }
+    
     public function save(Request $request)
     {
 
