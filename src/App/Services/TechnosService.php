@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+use Doctrine\DBAL\Connection;
+use PDO;
 
 class TechnosService extends BaseService
 {
@@ -8,6 +10,14 @@ class TechnosService extends BaseService
     public function findOneByCode($code)
     {
         return $this->db->fetchAssoc("SELECT * FROM techno WHERE code = ?",array($code));
+    }
+    
+    public function findSeveralByCode($codes)
+    {
+    	return $this->db->fetchAssoc(
+    			"SELECT * FROM techno WHERE code in (:codes)",
+    			array('codes' => $codes), 
+    			array('codes' => Connection::PARAM_STR_ARRAY));
     }
     
     public function findByTeamName($name)

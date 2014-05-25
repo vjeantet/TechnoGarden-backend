@@ -32,6 +32,14 @@ This is the README for the backend of Techno Garden :)
 |  rechercher les technos associées à une personne | GET|  /people/{username}/technos|  [http://10.12.1.135:9000/api/v1/people/vjeantet/technos](http://10.12.1.135:9000/api/v1/people/vjeantet/technos) | 
 |  recherche les technos d'une équipe utilisé par un de ses membres. | GET |  /teams/{name}/peoples/{username}/technos | *Not implemented yet* | 
 
+# Events
+## Recherche
+| Description									 | Verb          | URL | example |
+| ------------- | ----------- | ----------- | ----------- |
+|  rechercher les événements de mon équipe et des équipes proches | GET |  /team/{teamid}/events |  [http://10.12.1.135:9000/api/v1/team/4/events](http://10.12.1.135:9000/api/v1/team/4/events) | 
+|  créer un nouvel événement | PUT |  /events |  [http://10.12.1.135:9000/api/v1/events](http://10.12.1.135:9000/api/v1/events) | 
+|  effacer tous les événements | GET |  /deleteevents |  [http://10.12.1.135:9000/api/v1/deleteevents](http://10.12.1.135:9000/api/v1/deleteevents) | 
+
 ## recherche Globale
 | Description									 | Verb          | URL | example |
 | ------------- | ----------- | ----------- | ----------- |

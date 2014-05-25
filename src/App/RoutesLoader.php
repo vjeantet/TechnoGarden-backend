@@ -34,7 +34,7 @@ class RoutesLoader
 
         //EVENTS
         $this->app['events.controller'] = $this->app->share(function () {
-            return new Controllers\EventsController($this->app['events.service'], $this->app['teams.service']);
+            return new Controllers\EventsController($this->app['events.service'], $this->app['teams.service'], $this->app['technos.service']);
         });
 
        	//SEARCH
@@ -90,7 +90,8 @@ class RoutesLoader
         //PUT a new event
         $api->get('/team/{teamid}/events', "events.controller:getEvents"); 
         $api->put('/events', "events.controller:createEvent"); 
-           
+        $api->get('/deleteevents', "events.controller:deleteEvents");
+        
         /**
          * SEARCH
          */

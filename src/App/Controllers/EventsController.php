@@ -16,21 +16,36 @@ class EventsController
 	 * @var EventsService
 	 */
     protected $eventsService;
+    
+    /**
+     *
+     * @var TechnosService
+     */
+    protected $technosService;
+    
     /**
      * 
      * @var TeamsService
      */
     protected $teamsService;
 
-    public function __construct($eventsService, $teamsService)
+    public function __construct($eventsService, $teamsService, $technosService)
     {
         $this->eventsService = $eventsService;
         $this->teamsService = $teamsService;
+        $this->technosService = $technosService;
     }
 
-    public function createEvent()
+    public function deleteEvents()
     {
-
+    	return new JsonResponse($this->eventsService->deleteEvents());
+    }    
+    
+    public function createEvent(Request $request)
+    {
+		$event = $request->get('event');
+		$technos = $this->technosService->findSeveralByCode($event['technos']);
+		return new JsonResponse($this->eventsService->createEvent($event, $technos));
     }
 
 
@@ -49,5 +64,4 @@ class EventsController
         $nearTeamIds[] = $teamid;
         return new JsonResponse($this->eventsService->getProximityEvents($nearTeamIds));
     }
-
 }
