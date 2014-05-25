@@ -30,6 +30,10 @@ class ServicesLoader
         $this->app['events.service'] = $this->app->share(function () {
             return new Services\EventsService($this->app["db"]);
         });
+    	
+    	$this->app['search.service'] = $this->app->share(function () {
+    		return new Services\SearchService($this->app["db"]);
+    	});
     }
 }
 

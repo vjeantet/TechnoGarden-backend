@@ -36,6 +36,11 @@ class RoutesLoader
         $this->app['events.controller'] = $this->app->share(function () {
             return new Controllers\EventsController($this->app['events.service'], $this->app['teams.service']);
         });
+
+       	//SEARCH
+       	$this->app['search.controller'] = $this->app->share(function () {
+       		return new Controllers\SearchController($this->app['search.service']);
+       	});
     }
 
     public function bindRoutesToControllers()
@@ -46,8 +51,11 @@ class RoutesLoader
          * PEOPLE
          */
         // rechercher personne by username
+        $api->get('/people'			, "people.controller:findAllOrderByNameLastname");
+        // rechercher personne by username
         $api->get('/people/{username}'			, "people.controller:findOneByUsername");
         // rechercher les personnes d'une team particuliere
+        $api->get('/teams/{id}/people'	, "people.controller:findByTeamId")->assert('id', '\d');
         $api->get('/teams/{name}/people'	, "people.controller:findByTeamName");        
         // rechercher les personnes associées à une techno
         $api->get('/technos/{code}/people'		, "people.controller:findByTechnoCode");
@@ -56,7 +64,8 @@ class RoutesLoader
          * TEAMS
          */
         // rechercher une team par son nom
-        $api->get('/teams/{name}'			, "teams.controller:findOneByName");
+        $api->get('/teams/{id}'			, "teams.controller:findOneById")->assert('id', '\d');
+        $api->get('/teams/{name}'			, "teams.controller:findOneByName") ;
         // rechercher les equipes associées à une techno
         $api->get('/technos/{code}/teams'		, "teams.controller:findByTechnoCode");
         // recherche les equipes proches d'une autre equipe
@@ -68,6 +77,7 @@ class RoutesLoader
         // rechercher une techno par son nom
         $api->get('/technos/{code}'				, "technos.controller:findOneByCode");
         // rechercher les technos d'une team particuliere
+        $api->get('/teams/{id}/technos'	, "technos.controller:findByTeamId")->assert('id', '\d');
         $api->get('/teams/{name}/technos'	, "technos.controller:findByTeamName");
         // rechercher les technos d'une personne particuliere
         $api->get('/people/{username}/technos'	, "technos.controller:findByPeopleUsername");  
@@ -81,6 +91,10 @@ class RoutesLoader
         $api->get('/team/{teamid}/events', "events.controller:getEvents"); 
         $api->put('/events', "events.controller:createEvent"); 
            
+        /**
+         * SEARCH
+         */
+        $api->get('/search','search.controller:findTechnosTeamsPeopleByTerm') ;
 /*
         $api->post('/notes', "notes.controller:save");
         $api->post('/notes/{id}', "notes.controller:update");

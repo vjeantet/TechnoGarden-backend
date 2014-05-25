@@ -26,7 +26,12 @@ class TeamsController
     {
     	return new JsonResponse($this->teamsService->findOneByName($name));
     }
-
+    
+    public function findOneById($id)
+    {
+    	return new JsonResponse($this->teamsService->findOneById($id));
+    }
+    
     public function findByTechnoCode($code)
     {
     	return new JsonResponse($this->teamsService->findByTechnoCode($code));

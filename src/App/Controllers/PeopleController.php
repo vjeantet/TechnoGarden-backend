@@ -21,13 +21,26 @@ class PeopleController
         $this->peopleService = $service;
     }
     
+    public function findAllOrderByNameLastname()
+    {
+    	$person = $this->peopleService->findAllOrderByNameLastname() ;
+    
+    	return new JsonResponse($person);
+    }
+    
     public function findOneByUsername($username)
     {
     	$person = $this->peopleService->findOneByUsername($username) ;
 
     	return new JsonResponse($person);
     }
-
+	public function findByTeamId($id)
+	{
+		$person_list = $this->peopleService->findByTeamId($id) ;
+		 
+		return new JsonResponse($person_list);
+	}
+	
     public function findByTeamName($name)
     {
     	$person_list = $this->peopleService->findByTeamname($name) ;
