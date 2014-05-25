@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: May 24, 2014 at 07:02 PM
+-- Generation Time: May 24, 2014 at 08:12 PM
 -- Server version: 5.5.36
 -- PHP Version: 5.4.26
 
@@ -164,7 +164,9 @@ CREATE TABLE IF NOT EXISTS `techno` (
   `description` text NOT NULL,
   `type` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`),
+  UNIQUE KEY `code_2` (`code`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
@@ -218,20 +220,20 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `IMusernme`, `teamn
 (5, 'Balthazar', 'GRONON', 'bgronon@student.42.fr', 'bgronon', 'Techno Garden', 'bgronon'),
 (6, 'Thomas', 'GUILLIER', 'thomas.guillier@gmail.com', 'tguillier', 'Techno Garden', 'tguillier'),
 (7, 'JB', 'INGOLD', 'ingold.jb@gmail.com', 'jbingold', 'Techno Garden', 'jbingold'),
-(8, 'Melodie', 'SAGODIRA', 'msagodir@studet.42.fr', 'msagodir', 'SG/HACK/WIP', 'msagodir'),
-(9, 'Remi', 'BRIEUC', 'rbrieuc@student.42.fr', 'rbrieuc', 'SG/HACK/WIP', 'rbrieuc'),
-(10, 'Yann', 'PRINGAULT', 'ypringau@student.42.fr', 'ypringau', 'SG/HACK/WIP', 'ypringau'),
-(13, 'Hugo', 'MASSING', 'hmassing@student.42.fr', 'hmassing', 'SG/HACK/WIP', 'hmassing'),
-(14, 'Adrien', 'AUER', 'aaeur@student.42.fr', 'aaeur', 'SG/HACK/WIP', 'aaeur'),
-(15, 'Pierre', '', 'pierre@mail.fr', 'pierre', 'SG/HACK/NOBLABLA', 'pierre'),
-(16, 'Kevin', '', 'kevin@mail.fr', 'kevin', 'SG/HACK/NOBLABLA', 'kevin'),
-(17, 'Ahmed', '', 'ahmed@mail.fr', 'ahmed', 'SG/HACK/NOBLABLA', 'ahmed'),
-(18, 'Jeremy', 'Drouet', 'jdrouet@mail.fr', 'jdrouet', 'SG/HACK/APTENODYTES', 'jdrouet'),
-(19, 'Yann', 'Bonsens', 'ybonsens@mail.fr', 'ybonsens', 'SG/HACK/APTENODYTES', 'ybonsens'),
-(20, 'Marie', '', 'marie@mail.fr', 'marie', 'SG/HACK/HUBBLE', 'marie'),
-(21, 'Brice', '', 'brice@mail.fr', 'brice', 'SG/HACK/HUBBLE', 'brice'),
-(22, 'Fabien', '', 'fabien@mail.fr', 'fabien', 'SG/HACK/HUBBLE', 'fabien'),
-(23, 'Waiki', '', 'waiki@mail.fr', 'waiki', 'SG/HACK/HUBBLE', 'waiki'),
+(8, 'Melodie', 'SAGODIRA', 'msagodir@studet.42.fr', 'msagodir', 'WIP', 'msagodir'),
+(9, 'Remi', 'BRIEUC', 'rbrieuc@student.42.fr', 'rbrieuc', 'WIP', 'rbrieuc'),
+(10, 'Yann', 'PRINGAULT', 'ypringau@student.42.fr', 'ypringau', 'WIP', 'ypringau'),
+(13, 'Hugo', 'MASSING', 'hmassing@student.42.fr', 'hmassing', 'WIP', 'hmassing'),
+(14, 'Adrien', 'AUER', 'aaeur@student.42.fr', 'aaeur', 'WIP', 'aaeur'),
+(15, 'Pierre', '', 'pierre@mail.fr', 'pierre', 'Noblabla', 'pierre'),
+(16, 'Kevin', '', 'kevin@mail.fr', 'kevin', 'Noblabla', 'kevin'),
+(17, 'Ahmed', '', 'ahmed@mail.fr', 'ahmed', 'Noblabla', 'ahmed'),
+(18, 'Jeremy', 'Drouet', 'jdrouet@mail.fr', 'jdrouet', 'Aptenodytes', 'jdrouet'),
+(19, 'Yann', 'Bonsens', 'ybonsens@mail.fr', 'ybonsens', 'Aptenodytes', 'ybonsens'),
+(20, 'Marie', '', 'marie@mail.fr', 'marie', 'Hubble', 'marie'),
+(21, 'Brice', '', 'brice@mail.fr', 'brice', 'Hubble', 'brice'),
+(22, 'Fabien', '', 'fabien@mail.fr', 'fabien', 'Hubble', 'fabien'),
+(23, 'Waiki', '', 'waiki@mail.fr', 'waiki', 'Hubble', 'waiki'),
 (24, 'Selim', '', 'sbenhabb@student.42.fr', 'sbenhabb', 'Bubble', 'sbenhabb'),
 (25, 'Fernand', '', 'fernand@mail.fr', 'fernand', 'Bubble', 'fernand'),
 (26, 'Andre', '', 'andre@mail.fr', 'andre', 'Bubble', 'andre'),
@@ -338,8 +340,8 @@ ALTER TABLE `event_techno`
 -- Constraints for table `event_user`
 --
 ALTER TABLE `event_user`
-  ADD CONSTRAINT `event_user_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `event_user_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`);
+  ADD CONSTRAINT `event_user_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`),
+  ADD CONSTRAINT `event_user_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `team_techno`

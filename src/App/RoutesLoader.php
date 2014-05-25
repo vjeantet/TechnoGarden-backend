@@ -31,6 +31,11 @@ class RoutesLoader
        	$this->app['technos.controller'] = $this->app->share(function () {
        		return new Controllers\TechnosController($this->app['technos.service']);
        	});
+
+        //EVENTS
+        $this->app['events.controller'] = $this->app->share(function () {
+            return new Controllers\EventsController($this->app['events.service'], $this->app['teams.service']);
+        });
     }
 
     public function bindRoutesToControllers()
@@ -68,8 +73,14 @@ class RoutesLoader
         $api->get('/people/{username}/technos'	, "technos.controller:findByPeopleUsername");  
         // recherche les technos d'une équipe utilisé par un de ses membres.
         $api->get('/teams/{name}/peoples/{username}/technos'	, "technos.controller:findByTeamByUsername");
-        
-        
+
+        /**
+        * EVENTS 
+        */
+        //PUT a new event
+        $api->get('/team/{teamid}/events', "events.controller:getEvents"); 
+        $api->put('/events', "events.controller:createEvent"); 
+           
 /*
         $api->post('/notes', "notes.controller:save");
         $api->post('/notes/{id}', "notes.controller:update");
