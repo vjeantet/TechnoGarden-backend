@@ -70,7 +70,14 @@ class RoutesLoader
         $api->get('/technos/{code}/teams'		, "teams.controller:findByTechnoCode");
         // recherche les equipes proches d'une autre equipe
         $api->get('/teams/{teamid}/proximity/teams', "teams.controller:findByProximityById")->assert('teamid', '\d+');
-                
+
+        
+        // Ajouter techno a une equipe
+        $api->put('/teams/{id}/technos', "teams.controller:addTechnoByTechnoId");
+        
+        // Retirer tech a un equipe
+        $api->delete('/teams/{id}/technos/{techno_id}', 'teams.controller:removeTechnoByTechnoId') ;
+        
         /**
          * TECHNO - ASSETS
          */
