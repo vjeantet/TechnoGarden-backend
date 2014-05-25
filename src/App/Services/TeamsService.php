@@ -92,6 +92,14 @@ class TeamsService extends BaseService
     	return $this->db->insert("team_techno", $team_techno);
     }
     
+    public function deleteTeamTechnoByTechnoId($id,$techno_id)
+    {
+    	$sql= 'DELETE FROM team_techno WHERE id_team = '.$id.' AND id_techno = '.$techno_id ;
+    	$this->db->query($sql) ;
+    	return true ;
+    }
+    
+    
     function save($person)
     {
         $this->db->insert("people", $person);

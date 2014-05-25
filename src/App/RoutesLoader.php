@@ -74,8 +74,9 @@ class RoutesLoader
         
         // Ajouter techno a une equipe
         $api->put('/teams/{id}/technos', "teams.controller:addTechnoByTechnoId");
+        $api->put('/teams/{id}/technos/{techno_id}', "teams.controller:addTechnoByTechnoId2");
         
-        // Retirer tech a un equipe
+        // Retirer techno a une equipe
         $api->delete('/teams/{id}/technos/{techno_id}', 'teams.controller:removeTechnoByTechnoId') ;
         
         /**
