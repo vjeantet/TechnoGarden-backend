@@ -14,10 +14,10 @@ class TechnosService extends BaseService
     
     public function findSeveralByCode($codes)
     {
-    	return $this->db->fetchAssoc(
-    			"SELECT * FROM techno WHERE code in (:codes)",
-    			array('codes' => $codes), 
-    			array('codes' => Connection::PARAM_STR_ARRAY));
+    	$techno_list = $this->db->fetchAll(
+    			"SELECT * FROM techno WHERE code in ('".implode("','",$codes)."')" );
+
+    	return $techno_list ;
     }
     
     public function findByTeamName($name)
