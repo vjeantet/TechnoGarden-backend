@@ -70,7 +70,7 @@ class SearchService extends BaseService
 			'teams' 	=> $team_list,
 			'technos' 	=> $techno_list,
 			'events' 	=> $events_list,
-			''
+			'people'	=> $person_list
 		) ;
 	}
 }
