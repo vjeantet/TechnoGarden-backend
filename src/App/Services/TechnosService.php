@@ -14,8 +14,9 @@ class TechnosService extends BaseService
     
     public function findSeveralByCode($codes)
     {
+    	
     	$techno_list = $this->db->fetchAll(
-    			"SELECT * FROM techno WHERE code in ('".implode("','",$codes)."')" );
+    			"SELECT * FROM techno WHERE label in ('".implode("','",$codes)."')" );
 
     	return $techno_list ;
     }
