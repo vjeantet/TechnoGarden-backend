@@ -2,7 +2,7 @@ FROM debian:latest
 
 # Install base services: supervisor, sshd and some tools (vim, ps, ifconfig...)
 RUN apt-get update
-RUN apt-get install -y procps vim supervisor net-tools ssh wget unzip
+RUN apt-get install -y procps vim supervisor net-tools ssh wget unzip bzip2
 
 # Configure SSH
 RUN echo root:root | chpasswd
@@ -28,16 +28,25 @@ mysql -u root technogarden < backup_db.sql
 ## FRONT 
 
 # Install Node.js
-RUN cd /opt; \
-wget --quiet http://nodejs.org/dist/v0.10.28/node-v0.10.28-linux-x64.tar.gz; \
-tar -xzf node-v0.10.28-linux-x64.tar.gz; \
-cd /usr/bin; \
-ln -s /opt/node-v0.10.28-linux-x64/bin/node; \
+RUN cd /opt && \
+wget --quiet http://nodejs.org/dist/v0.10.28/node-v0.10.28-linux-x64.tar.gz && \
+tar -xzf node-v0.10.28-linux-x64.tar.gz && \
+cd /usr/bin && \
+ln -s /opt/node-v0.10.28-linux-x64/bin/node && \
 ln -s /opt/node-v0.10.28-linux-x64/bin/npm
 
 RUN cd /var/www && git clone https://github.com/42Zavattas/TechnoGarden.git
 ADD supervisor_technogarden_front.conf /etc/supervisor/conf.d/technogarden_front.conf
-# RUN cd /var/www/TechnoGarden && npm install
+
+RUN cd /var/www/TechnoGarden && \
+apt-get install -y ruby && \
+gem install compass && \ 
+npm install && \
+npm install -g yo bower && \
+bower --allow-root install &&
+
+## TODO: replace backend IP iand port in lib/config
+RUN grunt --force
 
 # On container run, launch supervisor
 CMD ["/usr/bin/supervisord", "--nodaemon"]
