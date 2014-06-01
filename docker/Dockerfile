@@ -43,10 +43,11 @@ apt-get install -y ruby && \
 gem install compass && \ 
 npm install && \
 npm install -g yo bower && \
-bower --allow-root install &&
+bower --allow-root install
 
 ## TODO: replace backend IP iand port in lib/config
-RUN grunt --force
+RUN cd /var/www/TechnoGarden && \
+grunt --force
 
 # On container run, launch supervisor
 CMD ["/usr/bin/supervisord", "--nodaemon"]
